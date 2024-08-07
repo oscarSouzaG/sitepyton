@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Django</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Minha Página</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'tab1')">Aba 1</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">Aba 2</button>
+        </div>
+        <div id="tab1" class="tab-content active">
+            <h2>Conteúdo da Aba 1</h2>
+            <p>Este é o conteúdo da primeira aba.</p>
+        </div>
+        <div id="tab2" class="tab-content">
+            <h2>Conteúdo da Aba 2</h2>
+            <p>Este é o conteúdo da segunda aba.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Oscar</p>
+    </footer>
+    <script>
+        function openTab(evt, tabId) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabId).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
