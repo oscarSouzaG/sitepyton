@@ -10,7 +10,7 @@ body {
 header {
     background-color: #007bff;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -58,8 +58,8 @@ footer {
     background-color: #343a40;
     color: white;
     text-align: center;
-    padding: 10px;
-    position: fixed;
+    padding: 15px;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -80,6 +80,7 @@ footer {
     flex: 1;
     border-radius: 5px 5px 0 0;
     outline: none;
+    transition: background-color 0.3s ease;
 }
 
 .tabs button.active {
@@ -97,4 +98,41 @@ footer {
 
 .tab-content.active {
     display: block;
+}
+
+/* Estilos para botões de formulário */
+.auth-form button,
+.signup-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover,
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para campos de entrada */
+.auth-form input[type="text"],
+.auth-form input[type="password"],
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Estilos para formulários */
+.auth-form form,
+.signup-form form {
+    display: flex;
+    flex-direction: column;
 }

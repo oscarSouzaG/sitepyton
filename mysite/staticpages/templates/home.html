@@ -1,35 +1,42 @@
-{% load static %}
+{% load static i18n %}  <!-- Carregue a tag i18n para marcação de tradução -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Página Django</title>
+    <title>{% trans "Minha Página Django" %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo à Minha Página</h1>
+        <h1>{% trans "Bem-vindo à Minha Página" %}</h1>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">{% trans "Home" %}</a></li>
+                <li><a href="#">{% trans "Sobre" %}</a></li>
+                <li><a href="#">{% trans "Contato" %}</a></li>
+                <li>
+                    <!-- Botão de Logout -->
+                    <form action="{% url 'logout' %}" method="post" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button">{% trans "Sair" %}</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
     <main>
         <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'tab1')">Aba 1</button>
-            <button class="tab-button" onclick="openTab(event, 'tab2')">Aba 2</button>
+            <button class="tab-button active" onclick="openTab(event, 'tab1')">{% trans "Aba 1" %}</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">{% trans "Aba 2" %}</button>
         </div>
         <div id="tab1" class="tab-content active">
-            <h2>Conteúdo da Aba 1</h2>
-            <p>Este é o conteúdo da primeira aba.</p>
+            <h2>{% trans "Conteúdo da Aba 1" %}</h2>
+            <p>{% trans "Este é o conteúdo da primeira aba." %}</p>
         </div>
         <div id="tab2" class="tab-content">
-            <h2>Conteúdo da Aba 2</h2>
-            <p>Este é o conteúdo da segunda aba.</p>
+            <h2>{% trans "Conteúdo da Aba 2" %}</h2>
+            <p>{% trans "Este é o conteúdo da segunda aba." %}</p>
         </div>
     </main>
     <footer>

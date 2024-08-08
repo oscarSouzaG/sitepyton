@@ -1,6 +1,37 @@
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Login - Minha Página Django" %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% trans "Cadastro de Usuário" %}</h1>
+    </header>
+    <main>
+        <h2>{% trans "Login" %}</h2>
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            <label for="id_username">{% trans "Nome de Usuário:" %}</label>
+            <input type="text" id="id_username" name="username" required>
+
+            <label for="id_password">{% trans "Senha:" %}</label>
+            <input type="password" id="id_password" name="password" required>
+
+            <button type="submit" class="submit-button">{% trans "Login" %}</button>
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+        </form>
+        <form action="{% url 'signup' %}" method="get" class="signup-form">
+            <button type="submit" class="signup-button">{% trans "Cadastrar-se" %}</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Oscar</p>
+    </footer>
+</body>
+</html>
