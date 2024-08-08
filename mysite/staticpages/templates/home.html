@@ -12,17 +12,23 @@
         <h1>{% trans "Bem-vindo Sistema PYtão" %}</h1>
         <nav>
             <ul class="nav-menu">
+                <li><a href="#">{% trans "Contato" %}</a></li>
                 <li><a href="#">{% trans "Home" %}</a></li>
                 <li><a href="#">{% trans "Sobre" %}</a></li>
-                <li><a href="#">{% trans "Contato" %}</a></li>
-
+                <li>
+                    <!-- Botão para acessar a página de registro veicular -->
+                    <a href="{% url 'registro_veicular' %}" class="registro-button">{% trans "Registro Veicular" %}</a>
+                </li>
                 <li>
                     <!-- Botão para acessar o admin -->
                     <a href="{% url 'admin:index' %}" class="admin-button">{% trans "Admin" %}</a>
                 </li>
                 <li>
-                    <!-- Botão para acessar a página de registro veicular -->
-                    <a href="{% url 'registro_veicular' %}" class="registro-button">{% trans "Registro Veicular" %}</a>
+                    <!-- Botão de Logout -->
+                    <form action="{% url 'logout' %}" method="post" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button">{% trans "Sair" %}</button>
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -40,7 +46,6 @@
             <h2>{% trans "Conteúdo da Aba 2" %}</h2>
             <p>{% trans "Este é o conteúdo da segunda aba." %}</p>
         </div>
-
     </main>
     <footer>
         <p>&copy; 2024 Oscar</p>
@@ -52,13 +57,4 @@
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
-            tabbuttons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
-            }
-            document.getElementById(tabId).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
-</body>
-</html>
+
