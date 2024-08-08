@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'staticpages',
     'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,4 @@ DATABASES = {
         'NAME': BASE_DIR / "db.sqlite3",
     }
 }
+LOGIN_URL = '/accounts/login/'  # URL da página de login
