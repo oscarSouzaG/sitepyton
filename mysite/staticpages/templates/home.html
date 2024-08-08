@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Minha Página Django" %}</title>
+    <title>{% trans "Sistema osk300" %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>{% trans "Bem-vindo à Minha Página" %}</h1>
+        <h1>{% trans "Bem-vindo Sistema PYtão" %}</h1>
         <nav>
             <ul class="nav-menu">
                 <li><a href="#">{% trans "Home" %}</a></li>
                 <li><a href="#">{% trans "Sobre" %}</a></li>
                 <li><a href="#">{% trans "Contato" %}</a></li>
+
                 <li>
-                    <!-- Botão de Logout -->
-                    <form action="{% url 'logout' %}" method="post" class="logout-form">
-                        {% csrf_token %}
-                        <button type="submit" class="logout-button">{% trans "Sair" %}</button>
-                    </form>
+                    <!-- Botão para acessar o admin -->
+                    <a href="{% url 'admin:index' %}" class="admin-button">{% trans "Admin" %}</a>
+                </li>
+                <li>
+                    <!-- Botão para acessar a página de registro veicular -->
+                    <a href="{% url 'registro_veicular' %}" class="registro-button">{% trans "Registro Veicular" %}</a>
                 </li>
             </ul>
         </nav>
@@ -38,6 +40,7 @@
             <h2>{% trans "Conteúdo da Aba 2" %}</h2>
             <p>{% trans "Este é o conteúdo da segunda aba." %}</p>
         </div>
+
     </main>
     <footer>
         <p>&copy; 2024 Oscar</p>
