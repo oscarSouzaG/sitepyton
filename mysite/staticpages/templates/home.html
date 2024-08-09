@@ -1,60 +1,35 @@
-{% load static i18n %}  <!-- Carregue a tag i18n para marcação de tradução -->
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Sistema osk300" %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <header>
-        <h1>{% trans "Bem-vindo Sistema PYtão" %}</h1>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#">{% trans "Contato" %}</a></li>
-                <li><a href="#">{% trans "Home" %}</a></li>
-                <li><a href="#">{% trans "Sobre" %}</a></li>
-                <li>
-                    <!-- Botão para acessar a página de registro veicular -->
-                    <a href="{% url 'registro_veicular' %}" class="registro-button">{% trans "Registro Veicular" %}</a>
-                </li>
-                <li>
-                    <!-- Botão para acessar o admin -->
-                    <a href="{% url 'admin:index' %}" class="admin-button">{% trans "Admin" %}</a>
-                </li>
-                <li>
-                    <!-- Botão de Logout -->
-                    <form action="{% url 'logout' %}" method="post" class="logout-form">
-                        {% csrf_token %}
-                        <button type="submit" class="logout-button">{% trans "Sair" %}</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'tab1')">{% trans "Aba 1" %}</button>
-            <button class="tab-button" onclick="openTab(event, 'tab2')">{% trans "Aba 2" %}</button>
-        </div>
-        <div id="tab1" class="tab-content active">
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}
+    {% trans "Sistema osk300" %}
+{% endblock %}
+
+{% block navbar-brand %}
+    {% trans "Sistema PYtão" %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">{% trans "Bem-vindo Sistema PYtão" %}</h1>
+    <p class="text-center">{% trans "Este é o sistema de gerenciamento de veículos." %}</p>
+
+    <!-- Abas (Tabs) -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">{% trans "Aba 1" %}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">{% trans "Aba 2" %}</a>
+        </li>
+    </ul>
+    <div class="tab-content mt-3" id="myTabContent">
+        <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
             <h2>{% trans "Conteúdo da Aba 1" %}</h2>
             <p>{% trans "Este é o conteúdo da primeira aba." %}</p>
         </div>
-        <div id="tab2" class="tab-content">
+        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
             <h2>{% trans "Conteúdo da Aba 2" %}</h2>
             <p>{% trans "Este é o conteúdo da segunda aba." %}</p>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Oscar</p>
-    </footer>
-    <script>
-        function openTab(evt, tabId) {
-            var i, tabcontent, tabbuttons;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
+    </div>
+{% endblock %}

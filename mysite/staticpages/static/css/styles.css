@@ -124,10 +124,12 @@ footer {
 .signup-form input[type="text"],
 .signup-form input[type="password"] {
     width: 100%;
+    max-width: 300px; /* Limita o tamanho máximo dos campos */
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-sizing: border-box; /* Garante que o padding e borda sejam incluídos na largura */
 }
 
 /* Estilos para formulários */

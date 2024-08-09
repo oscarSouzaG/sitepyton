@@ -5,7 +5,7 @@ def home(request):
     return render(request, 'home.html')
 from django.shortcuts import render, redirect
 from .forms import RegistroDeUsoForm
-
+@login_required
 def registro_uso_veiculo(request):
     if request.method == 'POST':
         form = RegistroDeUsoForm(request.POST)

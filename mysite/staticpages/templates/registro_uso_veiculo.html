@@ -1,13 +1,9 @@
+{% extends "base.html" %}
 {% load static i18n %}
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Registro de Uso do Veículo" %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+
+{% block title %}{% trans "Registro de Uso do Veículo" %}{% endblock %}
+
+{% block content %}
     <header>
         <h1>{% trans "Registro de Uso do Veículo" %}</h1>
     </header>
@@ -16,11 +12,7 @@
         <form method="post" class="auth-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="submit-button">{% trans "Registrar" %}</button>
+            <button type="submit" class="btn btn-primary">{% trans "Registrar" %}</button>
         </form>
     </main>
-    <footer>
-        <p>&copy; 2024 Oscar</p>
-    </footer>
-</body>
-</html>
+{% endblock %}

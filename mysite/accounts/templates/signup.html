@@ -1,29 +1,27 @@
-{% load static i18n %}
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Cadastro - Minha Página Django" %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Cadastro - Minha Página Django" %}
+{% endblock %}
+
+{% block content %}
     <header>
-        <h1>{% trans "Cadastro de Usuário" %}</h1>
+        <h1 class="text-center">{% trans "Cadastro de Usuário" %}</h1>
     </header>
-    <main>
-        <h2>{% trans "Cadastro" %}</h2>
-        <form method="post" class="auth-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="submit-button">{% trans "Cadastrar" %}</button>
-        </form>
-        <form action="{% url 'login' %}" method="get" class="login-form">
-            <button type="submit" class="login-button">{% trans "Já possui uma conta? Faça login" %}</button>
-        </form>
+    <main class="mt-4">
+        <h2 class="text-center">{% trans "Cadastro" %}</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" class="auth-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">{% trans "Cadastrar" %}</button>
+                </form>
+                <form action="{% url 'login' %}" method="get" class="mt-3">
+                    <button type="submit" class="btn btn-secondary btn-block">{% trans "Já possui uma conta? Faça login" %}</button>
+                </form>
+            </div>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Oscar</p>
-    </footer>
-</body>
-</html>
+{% endblock %}
